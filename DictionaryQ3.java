@@ -55,17 +55,17 @@ public class DictionaryQ3 implements Dictionary{
             //Traverse the tree to find the correct spot
             while(temp!=null){
                 parent = temp;
-                if(key.compareTo(temp.data) == 0){ //key already exists
+                if(key.toLowerCase().compareTo(temp.data.toLowerCase()) == 0){ //key already exists
                     return;
-                }else if(key.compareTo(temp.data)> 0){
+                }else if(key.toLowerCase().compareTo(temp.data.toLowerCase())> 0){
                     temp = temp.right; // Go right if key is larger than current node
-                }else{   
+                }else if(key.toLowerCase().compareTo(temp.data.toLowerCase())< 0){   
                     temp = temp.left; // Go left if key is smaller than current node
                 }
             }
 
         //Attach the new node as a child of parent
-        if(key.compareTo(parent.data) > 0){
+        if(key.toLowerCase().compareTo(parent.data.toLowerCase()) > 0){
             parent.right = newNode;
         }else{
             parent.left = newNode;
@@ -75,12 +75,13 @@ public class DictionaryQ3 implements Dictionary{
 
     @Override
     public void delete(String key) {
+        String lowercaseKey = key.toLowerCase();
         Node temp = root;
         Node parent = null;
 
-        while(temp!=null && temp.data.compareTo(key)!=0){
+        while(temp!=null && temp.data.toLowerCase().compareTo(lowercaseKey)!=0){
             parent = temp;
-            if(key.compareTo(temp.data) >0){
+            if(lowercaseKey.compareTo(temp.data.toLowerCase()) >0){
                 temp = temp.right;
             }else{
                 temp = temp.left;
@@ -196,7 +197,7 @@ public class DictionaryQ3 implements Dictionary{
         DictionaryQ3 dq3 = new DictionaryQ3();
         // dq3.open("VeryShortWords.txt");
         // dq3.print();
-        dq3.insert("OR");
+        dq3.insert("oR");
         dq3.insert("BE");
         dq3.insert("AN");
         dq3.insert("NO");
