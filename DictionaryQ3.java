@@ -195,14 +195,7 @@ public class DictionaryQ3 implements Dictionary{
 
     public static void main(String[] args) {
         DictionaryQ3 dq3 = new DictionaryQ3();
-        // dq3.open("VeryShortWords.txt");
-        // dq3.print();
-        dq3.insert("oR");
-        dq3.insert("BE");
-        dq3.insert("AN");
-        dq3.insert("NO");
-        dq3.insert("TO");
-        dq3.insert("PI");
+        dq3.open("VeryShortWords.txt");
         dq3.print();
     }
 }

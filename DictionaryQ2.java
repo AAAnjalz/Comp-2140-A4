@@ -26,7 +26,7 @@ public class DictionaryQ2 implements Dictionary {
         final int P = 13;
 
         for(int i=word.length()-1;i>=0;i--){ //We start from last character and work back
-            int charValue = (int)word.charAt(i);
+            int charValue = (int)word.toLowerCase().charAt(i);
             hash = (hash*P + charValue) % size;
         }
         return hash;
@@ -70,7 +70,7 @@ public boolean search(String key) {
     int index = hashCode(key, size);
 
     while (table[index] != null) { // stop when we hit an empty spot
-        if (!table[index].equals("REMOVED") && table[index].equals(key)) {
+        if (!table[index].equals("REMOVED") && table[index].equalsIgnoreCase(key)) {
             return true; // found it
         }
 
@@ -87,6 +87,9 @@ public boolean search(String key) {
 
     @Override
     public void insert(String key) {
+        if(search(key)){
+            return;
+        }
         int index = hashCode(key, size);
             while (table[index]!=null && !table[index].equals("REMOVED")) { 
                 index++;
@@ -94,7 +97,7 @@ public boolean search(String key) {
                     index = 0;
                 }
             }
-            table[index] = key;
+             table[index] = key;   
             currEntries++;
 
         double loadFactor = (double)currEntries/size;
@@ -115,7 +118,7 @@ public void delete(String key) {
 
     // Linear probing until we find key or hit an empty slot
     while (table[index] != null) {
-        if (!table[index].equals("REMOVED") && table[index].equals(key)) {
+        if (!table[index].equals("REMOVED") && table[index].equalsIgnoreCase(key)) {
             table[index] = "REMOVED";
             currEntries--;
             return; // key deleted, done

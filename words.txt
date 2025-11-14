@@ -1,2 +1,11 @@
-Informally
-Anjal
+Informally,
+an
+algorithm 
+is 
+any
+ well-defined
+computational 
+procedure 
+that 
+takes 
+some 

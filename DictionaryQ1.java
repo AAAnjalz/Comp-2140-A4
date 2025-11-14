@@ -24,7 +24,7 @@ public class DictionaryQ1 implements Dictionary{
 
     @Override
     public boolean search(String key) {
-        int index = hashCode(key);
+        int index = hashCode(key.toLowerCase());
         if(table[index] == null){
             return  false;
         }else{
@@ -34,17 +34,19 @@ public class DictionaryQ1 implements Dictionary{
 
     @Override
     public void insert(String key) {
-        int index = hashCode(key);
+        int index = hashCode(key.toLowerCase());
         if(table[index] == null){
             table[index] = new DoublyLinkedList();
         }
-        table[index].insert(key);
+        if(!table[index].search(key)){
+            table[index].insert(key);
+        }
         
     }
 
     @Override
     public void delete(String key) {
-        int index = hashCode(key);
+        int index = hashCode(key.toLowerCase());
         if(table[index] !=null){
             table[index].remove(key);
         }
@@ -83,8 +85,6 @@ public class DictionaryQ1 implements Dictionary{
         DictionaryQ1 dq1 = new DictionaryQ1();
         dq1.open("ShortWords.txt");
         dq1.print();
-   
-       
     }
     
 }

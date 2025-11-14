@@ -27,7 +27,7 @@ public class DoublyLinkedList {
 
     public void remove(String data){
         Node temp = head;
-        while (temp!=null && !(temp.data.equals(data))) {
+        while (temp!=null && !(temp.data.equalsIgnoreCase(data))) {
             temp = temp.next;
         }
         if(temp==null){
@@ -49,7 +49,7 @@ public class DoublyLinkedList {
         Node curr = head;
 
         while(curr!=null){
-            if(curr.data.equals(key)){
+            if(curr.data.equalsIgnoreCase(key)){
                 return true;
             }
             curr = curr.next;
